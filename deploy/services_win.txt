@@ -1,0 +1,1 @@
+workspace php-fpm php-worker nginx mysql rabbitmq redis adminer redis-webui
