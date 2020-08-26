@@ -18,7 +18,7 @@ services:
 
 ### Workspace Utilities ##################################
     workspace:
-      image: phpdevenv/workspace:7.3
+      image: agnphpenv/workspace:7.3
       restart: unless-stopped
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -35,7 +35,7 @@ services:
 
 ### PHP-FPM ##############################################
     php-fpm:
-      image: phpdevenv/php-fpm:7.3
+      image: agnphpenv/php-fpm:7.3
       restart: unless-stopped
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -50,7 +50,7 @@ services:
 
 ### PHP Worker ############################################
     php-worker:
-      image: phpdevenv/php-worker:7.3_phpredis
+      image: agnphpenv/php-worker:7.3_phpredis
       restart: unless-stopped
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -62,7 +62,7 @@ services:
 
 ### NGINX Server #########################################
     nginx:
-      image: phpdevenv/nginx:1.17.5
+      image: agnphpenv/nginx:1.17.5
       restart: unless-stopped
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -83,7 +83,7 @@ services:
 
 ### MySQL ################################################
     mysql:
-      image: phpdevenv/mysql:8.0.18
+      image: agnphpenv/mysql:latest
       restart: unless-stopped
       command: --default-authentication-plugin=mysql_native_password --table_definition_cache=1024 --sql_mode=ONLY_FULL_GROUP_BY,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
       environment:
@@ -102,7 +102,7 @@ services:
 
 ### RabbitMQ #############################################
     rabbitmq:
-      image: phpdevenv/rabbitmq:latest
+      image: agnphpenv/rabbitmq:latest
       restart: unless-stopped
       ports:
         - "${RABBITMQ_NODE_HOST_PORT}:5672"
@@ -122,7 +122,7 @@ services:
 
 ### Redis ################################################
     redis:
-      image: phpdevenv/redis:latest
+      image: agnphpenv/redis:latest
       restart: unless-stopped
       volumes:
         - ${DATA_PATH_HOST}/redis:/data
@@ -133,7 +133,7 @@ services:
 
 ### Adminer ###########################################
     adminer:
-      image: phpdevenv/adminer:latest
+      image: agnphpenv/adminer:latest
       restart: unless-stopped
       ports:
         - "${ADM_PORT}:8080"
@@ -143,7 +143,7 @@ services:
 
 ### REDISWEBUI ################################################
     redis-webui:
-      image: phpdevenv/redis-webui:latest
+      image: agnphpenv/redis-webui:latest
       restart: unless-stopped
       environment:
         - ADMIN_USER=${REDIS_WEBUI_USERNAME}
@@ -160,7 +160,7 @@ services:
 
 ### Githook ################################################
     githooks:
-      image: phpdevenv/githooks:latest
+      image: agnphpenv/githooks:latest
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
 
