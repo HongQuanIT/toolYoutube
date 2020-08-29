@@ -4,8 +4,8 @@
 2. Create strucre in root
 + `logs`
 + `certs`
-+ `deploys`
++ `deploy`
 + `sources`
 + + `dev`
 + + `...`
-3. To `deploys`. Run `./laradock.sh up` to pull images from dockerhub and start services.
+3. To `deploy`. Run `./laradock.sh up` to pull images from dockerhub and start services.
