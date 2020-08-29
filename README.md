@@ -8,3 +8,4 @@
 + `sources`
 + + `dev`
 + + `...`
+3. To `deploys`. Run `./laradock.sh up` to pull images from dockerhub and start services.
