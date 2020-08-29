@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,39 +19,19 @@ Route::get('/', 'WelcomeController@welcome')->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [ HomeController::class ,'index'])->name('home');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	// Route::get('table-list', function () {
-	// 	return view('pages.table_list');
-	// })->name('table');
-
-	// Route::get('typography', function () {
-	// 	return view('pages.typography');
-	// })->name('typography');
-
-	// Route::get('icons', function () {
-	// 	return view('pages.icons');
-	// })->name('icons');
-
-	// Route::get('map', function () {
-	// 	return view('pages.map');
-	// })->name('map');
-
-	// Route::get('notifications', function () {
-	// 	return view('pages.notifications');
-	// })->name('notifications');
-
-	// Route::get('rtl-support', function () {
-	// 	return view('pages.language');
-	// })->name('language');
-
-	// Route::get('upgrade', function () {
-	// 	return view('pages.upgrade');
-	// })->name('upgrade');
+	Route::get('/table-list', [ HomeController::class ,'tableList'])->name('tableList');
+	Route::get('/typography', [ HomeController::class ,'typography'])->name('typography');
+	Route::get('/icons', [ HomeController::class ,'icons'])->name('icons');
+	Route::get('/map', [ HomeController::class ,'map'])->name('map');
+	Route::get('/notifications', [ HomeController::class ,'notifications'])->name('notifications');
+	Route::get('/rtl-support', [ HomeController::class ,'language'])->name('language');
+	Route::get('/upgrade', [ HomeController::class ,'upgrade'])->name('upgrade');
 });
 
 Route::group(['middleware' => 'auth'], function () {
