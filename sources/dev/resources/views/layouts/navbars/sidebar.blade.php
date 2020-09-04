@@ -107,12 +107,12 @@
           <p>{{ __('Notifications') }}</p>
         </a>
       </li> -->
-      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }} bg-danger">
+      <!-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }} bg-danger">
         <a class="nav-link text-white" href="route('upgrade')">
           <i class="material-icons">unarchive</i>
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
