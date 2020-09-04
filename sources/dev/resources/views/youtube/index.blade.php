@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-Youtube
+<button class='demo-youtube' id='demo-youtube'>api generate youtube</button>
 </div>
 @endsection
 @section('scripts')

@@ -86,14 +86,73 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./resources/js/api.js":
+/*!*****************************!*\
+  !*** ./resources/js/api.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var BASE_URL = "/api/";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getYoutubeApi: function getYoutubeApi() {
+    return BASE_URL + 'generateDemo';
+  },
+  requestApi: function requestApi(url, callback) {
+    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'get';
+    var self = this;
+    self.errors = null;
+    return axios({
+      method: method,
+      url: url,
+      data: data
+    }).then(function (response) {
+      if (response.data.success) {
+        callback(response.data.data);
+      } else {
+        self.errors = response.data;
+      }
+    })["catch"](function (error) {
+      if (error && error.response && error.response.data) {
+        self.errors = error.response.data;
+      }
+    })["finally"](function () {
+      console.log(self.errors);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/pages/youtube.js":
 /*!***************************************!*\
   !*** ./resources/js/pages/youtube.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api */ "./resources/js/api.js");
 
+var Youtube = {
+  getYoutubeApi: function getYoutubeApi() {
+    var url = _api__WEBPACK_IMPORTED_MODULE_0__["default"].getYoutubeApi();
+    _api__WEBPACK_IMPORTED_MODULE_0__["default"].requestApi(url, function (data) {
+      alert(data);
+      console.log(data);
+    }, null, 'post');
+  }
+};
+$(document).ready(function () {
+  console.log("ready!");
+  $('#demo-youtube').click(function () {
+    Youtube.getYoutubeApi();
+  });
+});
 
 /***/ }),
 

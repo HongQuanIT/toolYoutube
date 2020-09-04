@@ -100,6 +100,7 @@
             </ul>
           </div>
         </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <!--   Core JS Files   -->
         <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
@@ -142,6 +143,7 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/js/settings.js"></script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script> -->
+        <script src="{{ mix('js/app.js') }}"></script>
         @yield('scripts')
         @stack('js')
     </body>

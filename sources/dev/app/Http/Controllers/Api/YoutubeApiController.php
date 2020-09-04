@@ -19,6 +19,13 @@ class YoutubeApiController extends BaseApiController
 
     public function index()
     {
-        return view('youtube.index');
+        try {
+            return $this->sendSuccessData([
+                'data' => 'ok',
+            ]);
+        } catch (Throwable $exception) {
+            $this->getLogger()->error($exception);
+            return $this->setMessage($exception->getMessage())->sendErrorData();
+        }
     }
 }
