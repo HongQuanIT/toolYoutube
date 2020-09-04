@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/pages/youtube.css": "/css/pages/youtube.css",
+    "/material/css/material-dashboard.css": "/material/css/material-dashboard.css",
     "/js/pages/youtube.js": "/js/pages/youtube.js"
 }

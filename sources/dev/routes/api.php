@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\YoutubeApiController;
+use App\Http\Controllers\Api\YoutubeApiController;
 
 
 /*
@@ -16,6 +16,6 @@ use App\Http\Controllers\YoutubeApiController;
 |
 */
 
-Route::group(['middleware'=>['auth:api']],function () {
-    Route::get('youtube',[YoutubeApiController::class,'index'])->name('getyoutube');
+Route::group(['middleware'=>['api']],function () {
+    Route::post('generateDemo',[YoutubeApiController::class,'index'])->name('getyoutube');
 });

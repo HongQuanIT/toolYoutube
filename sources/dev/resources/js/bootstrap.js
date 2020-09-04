@@ -1,4 +1,4 @@
-window._ = require('lodash');
+// window._ = require('lodash');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -7,10 +7,10 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+    // window.Popper = require('popper.js').default;
+    // window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    // require('bootstrap');
 } catch (e) {}
 
 /**
@@ -21,7 +21,32 @@ try {
 
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+const tokenDom = document.querySelector('meta[name=csrf-token]');
+if (tokenDom) {
+  const csrfToken = tokenDom.content;
+
+  // configure axios
+  window.axios.defaults.baseURL = process.env.MIX_APP_URL;
+  window.axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+  window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  window.axios.defaults.headers.common['accept-language'] =
+    document.documentElement.lang;
+  window.axios.defaults.headers.common[
+    'X-Timezone-Offset'
+  ] = new Date().getTimezoneOffset();
+  window.axios.defaults.headers.common['X-Frame-Options'] = 'DENY';
+
+  // configure ajax
+  window.$.ajaxSetup({
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader('accept-language', document.documentElement.lang);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.setRequestHeader('X-CSRF-Token', csrfToken);
+      xhr.setRequestHeader('X-Timezone-Offset', new Date().getTimezoneOffset());
+      xhr.setRequestHeader('X-Frame-Options', 'DENY');
+    },
+  });
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
