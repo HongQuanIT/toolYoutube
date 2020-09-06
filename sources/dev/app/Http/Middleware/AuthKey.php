@@ -16,9 +16,9 @@ class AuthKey
     public function handle($request, Closure $next)
     {
         $token = request()->header('X-CSRF-Token');
-        if ($token != 'CZrmLYEkWEWid3AZKfPbpzKBpWQGJCfGOguwEa3x') {
-            return response()->json(["message"=>"No find csrf token!"],401);
-        }
+        // if ($token != 'CZrmLYEkWEWid3AZKfPbpzKBpWQGJCfGOguwEa3x') {
+        //     return response()->json(["message"=>"No find csrf token!"],401);
+        // }
         return $next($request);
     }
 }

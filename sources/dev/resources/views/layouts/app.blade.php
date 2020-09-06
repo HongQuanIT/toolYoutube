@@ -15,6 +15,7 @@
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     @yield('styles')
+    <!-- <script src="/js/jquery-3.5.1.min.js"></script> -->
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
