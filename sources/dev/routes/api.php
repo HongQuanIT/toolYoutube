@@ -18,4 +18,5 @@ use App\Http\Controllers\Api\YoutubeApiController;
 
 Route::group(['middleware'=>['api']],function () {
     Route::post('generateDemo',[YoutubeApiController::class,'index'])->name('getyoutube');
+    Route::post('uploadvideo',[YoutubeApiController::class,'uploadvideo'])->name('uploadvideo');
 });

@@ -28,6 +28,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/table-list', [ HomeController::class ,'tableList'])->name('tableList');
 	Route::get('/youtube', [ YoutubeController::class ,'index'])->name('youtube');
+	Route::post('/render', [ YoutubeController::class ,'render'])->name('render');
 	Route::get('/typography', [ HomeController::class ,'typography'])->name('typography');
 	Route::get('/icons', [ HomeController::class ,'icons'])->name('icons');
 	Route::get('/map', [ HomeController::class ,'map'])->name('map');
@@ -35,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/rtl-support', [ HomeController::class ,'language'])->name('language');
 	Route::get('/upgrade', [ HomeController::class ,'upgrade'])->name('upgrade');
 });
-
+// user profile
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

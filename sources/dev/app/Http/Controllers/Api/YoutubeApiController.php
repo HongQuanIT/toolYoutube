@@ -28,4 +28,13 @@ class YoutubeApiController extends BaseApiController
             return $this->setMessage($exception->getMessage())->sendErrorData();
         }
     }
+    public function uploadvideo(Request $request)
+    {
+        try {
+            return $this->sendSuccessData($request->all());
+        } catch (Throwable $exception) {
+            $this->getLogger()->error($exception);
+            return $this->setMessage($exception->getMessage())->sendErrorData();
+        }
+    }
 }

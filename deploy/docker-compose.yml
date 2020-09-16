@@ -35,7 +35,9 @@ services:
 
 ### PHP-FPM ##############################################
     php-fpm:
-      image: agnphpenv/php-fpm:7.3
+      build: 
+        context: .
+        dockerfile: Dockerfile
       restart: unless-stopped
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
