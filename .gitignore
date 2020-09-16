@@ -3,4 +3,5 @@
 logs/
 .laradock/
 certs/
-sources/dev/public/
+sources/dev/public/css/
+sources/dev/public/js/

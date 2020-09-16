@@ -80,7 +80,7 @@ elif [ "$1" == "down" ]; then
 elif [ "$1" == "exec" ]; then
     if [ -z "$4" ]; then
         if [ -z $2 ] &&  [ -z $3 ]; then
-            docker-compose exec --user=laradock workspace bash
+            docker-compose exec --user=root workspace bash
         else
             if [ -z $3 ]; then
                 docker-compose exec $2 bash
@@ -119,7 +119,7 @@ elif [ "$1" == "restart" ]; then
 # artisan
 elif [ "$1" == "artisan" ]; then
     print_style "Run artisan command in workspace ...\n" "info"
-    docker-compose exec --user=laradock workspace bash -c 'cd /var/www/'"$2"' && php artisan '"$3"
+    docker-compose exec --user=root workspace bash -c 'cd /var/www/'"$2"' && php artisan '"$3"
 
 
 # site-init
@@ -128,7 +128,7 @@ elif [ "$1" == "site-init" ]; then
 
     # init site
     print_style "Init site ...\n"
-    $script_folder/laradock.sh exec workspace laradock 'cd /var/www/'"$2"' && yes | cp -rf .env.example .env && composer install'
+    $script_folder/laradock.sh exec workspace root 'cd /var/www/'"$2"' && yes | cp -rf .env.example .env && composer install'
 
     # update .env
     print_style "Update .env ...\n"
@@ -146,7 +146,7 @@ elif [ "$1" == "site-init" ]; then
     sed -i s/INTERNAL_URL=.*/INTERNAL_URL=http:\\/\\/$internal.$domain\\// ../multi/$2/.env
 
     # update Laravel
-    $script_folder/laradock.sh exec workspace laradock 'cd /var/www/'"$2"' && php artisan optimize && php artisan key:generate && composer install'
+    $script_folder/laradock.sh exec workspace root 'cd /var/www/'"$2"' && php artisan optimize && php artisan key:generate && composer install'
 
     print_style "Done!\n"
 
@@ -166,7 +166,8 @@ elif [ "$1" == "refresh" ]; then
         npm_mode="$3"
     fi
     print_style "Refreshing site $2 with npm_run_mode $npm_mode ...\n" "info"
-    $script_folder/laradock.sh exec workspace laradock 'cd /var/www/'"$2"' && php artisan optimize && php artisan migrate:fresh --seed && php artisan passport:install && npm run '"$npm_mode"
+    $script_folder/laradock.sh exec workspace root 'cd /var/www/'"$2"
+    ' && php artisan optimize && php artisan migrate:fresh --seed && php artisan passport:install && npm run '"$npm_mode"
 
 else
     print_style "Invalid arguments.\n" "danger"

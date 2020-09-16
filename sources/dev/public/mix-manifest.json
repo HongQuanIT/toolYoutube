@@ -1,0 +1,14 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/pages/youtube.css": "/css/pages/youtube.css",
+    "/material/css/material-dashboard.css": "/material/css/material-dashboard.css",
+    "/css/jot.css": "/css/jot.css",
+    "/js/jotform/errorNavigation.js": "/js/jotform/errorNavigation.js",
+    "/js/jotform/fileuploader.js": "/js/jotform/fileuploader.js",
+    "/js/jotform/imageinfo.js": "/js/jotform/imageinfo.js",
+    "/js/jotform/jotform.forms.js": "/js/jotform/jotform.forms.js",
+    "/js/jotform/prototype.forms.js": "/js/jotform/prototype.forms.js",
+    "/js/jotform/smoothscroll.min.js": "/js/jotform/smoothscroll.min.js",
+    "/js/pages/youtube.js": "/js/pages/youtube.js"
+}

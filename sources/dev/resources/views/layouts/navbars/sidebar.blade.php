@@ -5,8 +5,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{ route('home') }}" class="simple-text logo-normal">
+      <img class="" src="./logo-hq.png" style="width: 40%;">
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -25,7 +25,7 @@
       </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+          <i><img style="width:25px" src="{{ asset('material') }}/img/user.svg"></i>
           <p>{{ __('Tài khoản') }}
             <b class="caret"></b>
           </p>
