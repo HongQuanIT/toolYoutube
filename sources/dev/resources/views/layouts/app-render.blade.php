@@ -21,7 +21,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-            @include('layouts.page_templates.auth-youtube')
+            @include('layouts.page_templates.auth-render')
         @endauth
         @guest()
             @include('layouts.page_templates.guest')
