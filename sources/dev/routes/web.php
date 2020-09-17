@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\YoutubeController;
+use App\Http\Controllers\RenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/table-list', [ HomeController::class ,'tableList'])->name('tableList');
 	Route::get('/youtube', [ YoutubeController::class ,'index'])->name('youtube');
-	Route::post('/render', [ YoutubeController::class ,'render'])->name('render');
+	Route::get('/render', [ RenderController::class ,'index'])->name('render');
+	Route::post('/render', [ RenderController::class ,'render'])->name('render.create');
 	Route::get('/typography', [ HomeController::class ,'typography'])->name('typography');
 	Route::get('/icons', [ HomeController::class ,'icons'])->name('icons');
 	Route::get('/map', [ HomeController::class ,'map'])->name('map');

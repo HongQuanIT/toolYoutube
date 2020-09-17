@@ -17,9 +17,15 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'render' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('render') }}">
+          <i><img style="width:25px" src="{{ asset('material') }}/img/video.svg"></i>
+            <p>{{ __('Render video') }}</p>
+        </a>
+      </li>
       <li class="nav-item{{ $activePage == 'youtube' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('youtube') }}">
-          <i class="material-icons">youtube</i>
+          <i><img style="width:25px" src="{{ asset('material') }}/img/youtube.svg"></i>
             <p>{{ __('Youtube') }}</p>
         </a>
       </li>
