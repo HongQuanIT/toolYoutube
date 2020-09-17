@@ -19,6 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('email',191)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',255);
+            $table->unsignedTinyInteger('type')
+                ->default(1)
+                ->comment('Type: 1-nomal, 2-vip1, 3-vip2');
+            $table->boolean('rendering')
+                ->default(false)
+                ->comment('Rendering Status, false: not render, true: rendering');
+            $table->boolean('status')
+                ->default(true)
+                ->comment('Status, false: Inactive, true: Active');
             $table->rememberToken();
             $table->timestamps();
         });
