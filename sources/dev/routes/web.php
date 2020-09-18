@@ -19,12 +19,9 @@ use App\Http\Controllers\RenderController;
 
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [ HomeController::class ,'index'])->name('home');
-Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', [ HomeController::class ,'index'])->name('home')->middleware('verified');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/table-list', [ HomeController::class ,'tableList'])->name('tableList');
