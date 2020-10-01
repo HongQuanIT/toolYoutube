@@ -16,5 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/pages/youtube.js', 'public/js/pages')
     .sass('resources/sass/youtube.scss', 'public/css/pages');
 mix.sass('resources/sass/material-dashboard.scss', 'public/material/css');
+mix.js('resources/js/pages/render.js', 'public/js/pages')
+    .sass('resources/sass/render.scss', 'public/css/pages');
 
 

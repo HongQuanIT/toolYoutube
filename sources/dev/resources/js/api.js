@@ -4,6 +4,12 @@ export default {
   getYoutubeApi() {
     return BASE_URL + 'generateDemo';
   },
+  getFrameApi() {
+    return BASE_URL + 'frame';
+  },
+  getFrameDetailApi(id) {
+    return BASE_URL + 'frame/'+id;
+  },
   
   requestApi(url, callback, data = null, method = 'get') {
     let self = this;

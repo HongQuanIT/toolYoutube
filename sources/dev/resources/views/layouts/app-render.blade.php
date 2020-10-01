@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset('alertify') }}/alertify.core.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset('alertify') }}/alertify.default.css?v=2.1.1" rel="stylesheet" id="toggleCSS"/>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
     @yield('styles')
     </head>
@@ -26,9 +28,11 @@
         @guest()
             @include('layouts.page_templates.guest')
         @endguest
-        
-        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="{{ mix('js/app.js') }}"></script> -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
+        <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
+
+        <script src="{{ mix('js/app.js') }}"></script>
         @yield('scripts')
         @stack('js')
     </body>
