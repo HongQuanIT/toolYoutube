@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\YoutubeApiController;
+use App\Http\Controllers\Api\RenderApiController;
 
 
 /*
@@ -19,4 +20,6 @@ use App\Http\Controllers\Api\YoutubeApiController;
 Route::group(['middleware'=>['api']],function () {
     Route::post('generateDemo',[YoutubeApiController::class,'index'])->name('getyoutube');
     Route::post('uploadvideo',[YoutubeApiController::class,'uploadvideo'])->name('uploadvideo');
+    Route::get('frame',[RenderApiController::class,'listFrame'])->name('listFrame');
+    Route::get('frame/{id}',[RenderApiController::class,'getFrame'])->name('getFrame');
 });

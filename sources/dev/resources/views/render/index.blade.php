@@ -5,27 +5,30 @@
 <!-- Custom styles -->
 <link href="./dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
 <link href="./styles.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ mix('css/pages/render.css') }}">
 </script>
 @endsection
 
 @section('content')
 <div class="content">
     <main role="main" class="container">
-        <form method="post" action="{{route('render')}}" accept-charset="UTF-8">
+        <form method="post" action="{{route('render')}}" accept-charset="UTF-8" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-12 input-group mb-3">
                     <div class="input-group-prepend" style="border: 1px solid #00000029;">
-                        <label class="input-group-text" for="inputGroupSelect01">Chọn Frame</label>
+                        <label class="input-group-text" for="chose_frame">Chọn Frame</label>
                     </div>
-                    <select name="frame" class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">Frame 1</option>
-                        <option value="2">Frame 2</option>
-                        <option value="3">Frame 3</option>
+                    <select name="frame" class="custom-select" id="chose_frame">
+                        <option value="0" selected>Choose...</option>
                     </select>
                 </div>
+                <div id="description_frame" class="col-md-6 col-sm-12">
 
+                </div>
+                <div id="preview_frame" class="col-md-6 col-sm-12">
+
+                </div>
                 <div class="col-md-6 col-sm-12">
                     
                     <!-- Our markup, the important part here! -->
@@ -55,6 +58,7 @@
                 <button type="submit" class="btn btn-primary" style="padding: 20px 30px;">Tiến hành render</button>
             </div>
         </form>
+        <span id="alert">Alert Dialog</span>
         <div class="row">
         <div class="col-12">
             <div class="card h-100">
@@ -80,11 +84,12 @@
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
+<!-- alertify -->
+<script src="{{ asset('alertify') }}/alertify.min.js"></script>
 <script src="./dist/js/jquery.dm-uploader.min.js"></script>
 <script src="demo-ui.js"></script>
 <script src="demo-config.js"></script>
-
+<script src="{{ mix('js/pages/render.js') }}"></script>
 <!-- File item template -->
 <script type="text/html" id="files-template">
     <li class="media">

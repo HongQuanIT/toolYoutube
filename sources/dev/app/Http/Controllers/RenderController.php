@@ -29,22 +29,32 @@ class RenderController extends Controller
 
     public function render(Request $request)
     {
-        // dd($request->all());
+
         $id = Auth::user()->id;
+        if (!file_exists(public_path()."/backend/output/$id")) {
+            mkdir(public_path()."/backend/output/$id", 0777, true);
+            mkdir(public_path()."/backend/output/$id/logo", 0777, true);
+            mkdir(public_path()."/backend/output/$id/background", 0777, true);
+        }
+        //Move Uploaded File
+        if($request->hasFile('logo')){
+            $logo = $request->file('logo');
+            $destinationPath_logo = public_path()."/backend/files/$id/logo";
+            $logo->move($destinationPath_logo,$logo->getClientOriginalName());
+        }
+        if($request->hasFile('backgrond')){
+            $background = $request->file('background');
+            $destinationPath_background = public_path()."/backend/files/$id/logo";
+            $background->move($destinationPath_background,$background->getClientOriginalName());
+        }
+        
         $frame = $request->get('frame');
-        // dd($frame);
         switch ($frame) {
             case 1:
-                // dd(1);
-                if (!file_exists(public_path()."/backend/output/$id")) {
-                    mkdir(public_path()."/backend/output/$id", 0777, true);
-                }
+                
                 $files = glob(public_path()."/backend/files/$id/*.{webm,mp4}", GLOB_BRACE);
                 foreach($files as $file) {
-                    // copy($file, public_path()."/backend/output/$id/".basename($file));
-
                     $path_output = public_path()."/backend/output/$id/output.avi";
-                    // dd("ffmpeg -i $file $path_output");
                     $cmd = shell_exec("ffmpeg -i $file $path_output 2>&1");
                     if( !$cmd ){
                         dd("loi roi !");

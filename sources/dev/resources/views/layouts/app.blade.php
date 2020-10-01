@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset('alertify') }}/alertify.core.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset('alertify') }}/alertify.default.css?v=2.1.1" rel="stylesheet" id="toggleCSS" />
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
     @yield('styles')
     <!-- <script src="/js/jquery-3.5.1.min.js"></script> -->
@@ -70,6 +72,8 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/js/settings.js"></script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script> -->
+        <!-- alertify -->
+        <script src="{{ asset('alertify') }}/alertify.min.js"></script>
         <script src="{{ mix('js/app.js') }}"></script>
         @yield('scripts')
         @stack('js')
